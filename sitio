@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CEER · Centro de Estudios Regionales Estratégicos para el Desarrollo</title>
+  <meta name="description" content="Centro de Estudios Regionales Estratégicos para el Desarrollo (CEER): investigación aplicada, observatorio de información regional, política fiscal y desigualdad." />
+  <meta name="theme-color" content="#0f172a" />
+  <style>
+    :root{
+      --bg:#0b1020; /* slate-950 */
+      --card:#0f172a; /* slate-900 */
+      --muted:#94a3b8; /* slate-400 */
+      --text:#e5e7eb; /* slate-200 */
+      --brand:#22d3ee; /* cyan-400 */
+      --accent:#38bdf8; /* sky-400 */
+      --ring:#7dd3fc; /* sky-300 */
+      --ok:#10b981; /* emerald-500 */
+      --warning:#f59e0b; /* amber-500 */
+      --danger:#ef4444; /* red-500 */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--text); background:linear-gradient(180deg, #0b1020 0%, #0c1326 40%, #0b1223 100%)}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.65);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid rgba(148,163,184,.12)}
+    nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.3px}
+    .logo{width:36px;height:36px;border-radius:10px;background:radial-gradient(120% 120% at 20% 10%, var(--accent), transparent 45%),radial-gradient(130% 130% at 80% 90%, var(--brand), transparent 40%), linear-gradient(135deg,#0ea5e9,#22d3ee);box-shadow:0 6px 18px rgba(56,189,248,.35)}
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{padding:8px 10px;border-radius:10px}
+    .navlinks a:hover{background:rgba(148,163,184,.1)}
+    .menu-btn{display:none;background:transparent;border:0;color:var(--text);font-size:22px}
+    @media (max-width:860px){
+      .navlinks{display:none}
+      .menu-btn{display:block}
+      .mobile{display:none;position:absolute;inset:64px 0 auto 0;background:rgba(11,16,32,.95);border-bottom:1px solid rgba(148,163,184,.12)}
+      .mobile a{display:block;padding:14px 20px}
+    }
+
+    .hero{padding:72px 0 32px;border-bottom:1px solid rgba(148,163,184,.12)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(34,211,238,.12);border:1px solid rgba(56,189,248,.35);color:var(--accent);font-size:13px}
+    h1{font-size:clamp(28px,4vw,46px);line-height:1.05;margin:12px 0 14px}
+    p.lead{font-size:clamp(16px,2vw,19px);color:var(--muted)}
+    .card{background:linear-gradient(180deg, rgba(15,23,42,.95), rgba(15,23,42,.86)); border:1px solid rgba(148,163,184,.15);border-radius:var(--radius); box-shadow:var(--shadow)}
+    .cta{display:flex;gap:12px;margin-top:22px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:600;border:1px solid rgba(125,211,252,.35);background:rgba(2,132,199,.15)}
+    .btn.primary{background:linear-gradient(180deg,#0891b2,#0284c7);border-color:transparent;box-shadow:0 10px 22px rgba(8,145,178,.35)}
+    .btn:hover{transform:translateY(-1px)}
+
+    section{padding:60px 0}
+    section h2{font-size:clamp(22px,3vw,30px);margin:0 0 16px}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+    .grid .card{padding:20px}
+    .muted{color:var(--muted)}
+    .kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+    .kpi .k{padding:16px;border-radius:14px;background:rgba(148,163,184,.06);border:1px solid rgba(148,163,184,.15)}
+
+    @media (max-width:960px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .kpi{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+    .list{display:grid;gap:10px}
+    .list li{list-style:none;padding:12px 14px;border-radius:12px;background:rgba(148,163,184,.06);border:1px solid rgba(148,163,184,.12)}
+
+    footer{padding:30px 0;border-top:1px solid rgba(148,163,184,.12);color:var(--muted)}
+    .tag{font-size:12px;padding:4px 8px;border:1px solid rgba(148,163,184,.2);border-radius:999px}
+    .chip{display:inline-block;margin:6px 6px 0 0}
+    .cols{display:grid;grid-template-columns:1.4fr .6fr;gap:20px}
+    @media (max-width:900px){.cols{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand"><span class="logo" aria-hidden="true"></span><span>CEER</span></div>
+        <div class="navlinks" id="navlinks">
+          <a href="#acerca">Acerca</a>
+          <a href="#lineas">Líneas</a>
+          <a href="#observatorio">Observatorio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">☰</button>
+      </nav>
+      <div class="mobile" id="mobile"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <span class="badge">Centro de Estudios Regionales Estratégicos para el Desarrollo</span>
+            <h1>Investigación aplicada, datos abiertos y estrategia territorial para un desarrollo con equidad</h1>
+            <p class="lead">El CEER produce evidencia, herramientas y propuestas para fortalecer capacidades locales de planeación, mejorar la política fiscal y reducir desigualdades territoriales y de ingreso.</p>
+            <div class="cta">
+              <a class="btn primary" href="#observatorio">Explorar Observatorio</a>
+              <a class="btn" href="#proyectos">Ver Proyectos</a>
+            </div>
+            <div class="kpi">
+              <div class="k"><strong>4</strong><br><span class="muted">ejes estratégicos</span></div>
+              <div class="k"><strong>+50</strong><br><span class="muted">estudios revisados (meta-análisis)</span></div>
+              <div class="k"><strong>Open</strong><br><span class="muted">datos y código</span></div>
+            </div>
+          </div>
+          <div class="card" style="padding:18px">
+            <div class="cols">
+              <div>
+                <h3 style="margin:8px 0 6px">Misión</h3>
+                <p class="muted">Contribuir al conocimiento y transformación del territorio mediante investigación interdisciplinaria, análisis de políticas públicas y difusión científica orientada al desarrollo sostenible y la equidad regional.</p>
+                <h3 style="margin:18px 0 6px">Vinculación</h3>
+                <p class="muted">Proyectos con universidades (UNAM–IIEc, CIAD, UNISON) y alianzas con sector público y social.</p>
+              </div>
+              <div>
+                <h3 style="margin:8px 0 6px">Qué hacemos</h3>
+                <ul class="list">
+                  <li>Observatorio de Información Regional</li>
+                  <li>Estudios de política fiscal y desigualdad</li>
+                  <li>Diagnósticos sectoriales y territoriales</li>
+                  <li>Talleres de datos y econometría aplicada</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="acerca">
+      <div class="container">
+        <h2>Acerca del CEER</h2>
+        <p class="muted">El CEER integra investigación académica, observación sistemática y divulgación. Combinamos enfoques de economía regional y urbana, nueva geografía económica, análisis insumo–producto y métodos microeconométricos para estudiar desigualdad y desarrollo. Nuestras líneas de trabajo son rigurosas y compatibles con criterios de evaluación académica (p. ej., SNII) y con necesidades de toma de decisión pública.</p>
+      </div>
+    </section>
+
+    <section id="lineas">
+      <div class="container">
+        <h2>Líneas estratégicas</h2>
+        <div class="grid">
+          <div class="card"><h3>Economía regional y urbana</h3><p class="muted">Productividad, estructura sectorial, migración y desigualdad territorial.</p></div>
+          <div class="card"><h3>Política fiscal y redistribución</h3><p class="muted">Impacto del IVA y del gasto en precios, consumo y distribución del ingreso.</p></div>
+          <div class="card"><h3>Frontera Norte y desarrollo local</h3><p class="muted">Regímenes diferenciados, industria maquiladora, integración y movilidad.</p></div>
+          <div class="card"><h3>Medio ambiente y memoria territorial</h3><p class="muted">Sustentabilidad, uso del suelo y procesos de identidad regional.</p></div>
+          <div class="card"><h3>Innovación, educación y trabajo</h3><p class="muted">Capacidades locales, mercados de trabajo y cohesión social.</p></div>
+          <div class="card"><h3>Datos abiertos y ciencia reproducible</h3><p class="muted">Repositorios, documentación, licencias y buenas prácticas.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="observatorio">
+      <div class="container">
+        <h2>Observatorio de Información Regional</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Estadísticas y tableros</h3>
+            <p class="muted">Indicadores municipales y estatales. Visualizaciones interactivas y series históricas.
+            </p>
+            <span class="tag chip">Próximamente</span>
+          </div>
+          <div class="card">
+            <h3>Datos y documentación</h3>
+            <p class="muted">Metadatos, diccionarios y cuadernos de trabajo para replicabilidad.</p>
+            <span class="tag chip">Open Data</span>
+          </div>
+          <div class="card">
+            <h3>Boletines y reportes</h3>
+            <p class="muted">Notas metodológicas, análisis coyunturales y reportes temáticos.</p>
+            <span class="tag chip">PDF / Web</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <div class="container">
+        <h2>Proyectos en desarrollo</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Meta‑análisis IVA–Desigualdad</h3>
+            <p class="muted">Revisión PRISMA de literatura internacional sobre fiscalidad e inequidad (50+ estudios).</p>
+          </div>
+          <div class="card">
+            <h3>IVA Diferenciado Frontera Norte</h3>
+            <p class="muted">Modelo insumo–producto y microsimulación para impactos en precios y bienestar.</p>
+          </div>
+          <div class="card">
+            <h3>Sistema Inteligente Presupuestario</h3>
+            <p class="muted">Automatización institucional de modificaciones presupuestarias en Python.</p>
+          </div>
+          <div class="card">
+            <h3>Observatorio CEER</h3>
+            <p class="muted">Portal interactivo de datos abiertos, mapas e indicadores regionales.</p>
+          </div>
+          <div class="card">
+            <h3>Memoria y Medio Ambiente</h3>
+            <p class="muted">Líneas de base, cartografía y narrativas territoriales.</p>
+          </div>
+          <div class="card">
+            <h3>Formación y Talleres</h3>
+            <p class="muted">Econometría aplicada, visualización y buenas prácticas reproducibles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <h2>Contacto y colaboración</h2>
+        <p class="muted">Buscamos alianzas con instituciones, investigadores y organizaciones interesadas en transformar el desarrollo regional.</p>
+        <div class="grid">
+          <div class="card" style="padding:20px">
+            <h3>Correo</h3>
+            <p><a href="mailto:contacto.ceer@gmail.com">contacto.ceer@gmail.com</a></p>
+            <h3 style="margin-top:14px">Código y datos</h3>
+            <p class="muted">Este sitio está pensado para desplegarse con GitHub Pages. El repositorio alojará código, datos abiertos y documentación.</p>
+          </div>
+          <div class="card" style="padding:20px">
+            <h3>Boletín</h3>
+            <p class="muted">Pronto habilitaremos suscripción para novedades del Observatorio CEER.</p>
+            <span class="tag">Roadmap</span>
+          </div>
+          <div class="card" style="padding:20px">
+            <h3>Licencia</h3>
+            <p class="muted">Contenido bajo CC BY‑NC 4.0. Código bajo MIT, salvo indicación distinta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap">
+      <div>© <span id="year"></span> CEER · Centro de Estudios Regionales Estratégicos para el Desarrollo</div>
+      <div>
+        <span class="tag">#economía‑regional</span>
+        <span class="tag">#desigualdad</span>
+        <span class="tag">#política‑fiscal</span>
+        <span class="tag">#datos‑abiertos</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Menú móvil
+    const btn = document.getElementById('menuBtn');
+    const mobile = document.getElementById('mobile');
+    const links = `
+      <a href="#acerca">Acerca</a>
+      <a href="#lineas">Líneas</a>
+      <a href="#observatorio">Observatorio</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>`;
+    btn?.addEventListener('click',()=>{
+      if(mobile.style.display==='block') mobile.style.display='none';
+      else{mobile.innerHTML=links; mobile.style.display='block';}
+    });
+  </script>
+</body>
+</html>
